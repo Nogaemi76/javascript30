@@ -59,6 +59,30 @@
 
 <script>
   
+  const keys = document.getElementsByClassName("key");
+  const keysAudio = document.getElementsByTagName("audio");
+  
+  console.dir(keys);
+  console.dir(keysAudio);
+  
+  for(let i = 0; i < keys.length; i++) {
+    keys[i].addEventListener('mousedown', () => {
+      keys[i].classList.add("playing");
+      let dataKey = keys[i].getAttribute('data-key');
+      console.dir(dataKey);
+      let audio = document.getElementsByTagName("audio");
+      console.dir(audio);
+      for(let j = 0; j < audio.length; j++) {
+        let audioDataKey = audio[j].getAttribute('data-key');
+        console.dir(audioDataKey);
+        if (audioDataKey == dataKey) audio[j].play();
+      }
+    });
+    keys[i].addEventListener('mouseup', () => {
+      keys[i].classList.remove("playing");
+    })
+  }
+
 </script>
 
 
